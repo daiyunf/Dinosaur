@@ -9,89 +9,89 @@ import javax.swing.JPanel;
 import com.mr.modle.*;
 import com.mr.service.*;
 /**
- * ÓÎÏ·Ãæ°å
+ * ï¿½ï¿½Ï·ï¿½ï¿½ï¿½
  * 
- * @author mingrisoft
+ * @author æ ¼ä¼¦çš„å¥‡å¦™å†’é™©
  *
  */
 public class GamePanel extends JPanel implements KeyListener {
-    private BufferedImage image;// Ö÷Í¼Æ¬
-    private BackgroundImage background;// ±³¾°Í¼Æ¬
-    private Dinosaur golden;// ¿ÖÁú
-    private Graphics2D g2;// Ö÷Í¼Æ¬»æÍ¼¶ÔÏó
-    private int addObstacleTimer = 0;// Ìí¼ÓÕÏ°­¼ÆÊ±Æ÷
-    private boolean finish = false;// ÓÎÏ·½áÊø±êÖ¾
-    private List<Obstacle> list = new ArrayList<Obstacle>();// ÕÏ°­¼¯ºÏ
-    private final int FREASH = FreshThread.FREASH;// Ë¢ÐÂÊ±¼ä
+    private BufferedImage image;// ï¿½ï¿½Í¼Æ¬
+    private BackgroundImage background;// ï¿½ï¿½ï¿½ï¿½Í¼Æ¬
+    private Dinosaur golden;// ï¿½ï¿½ï¿½ï¿½
+    private Graphics2D g2;// ï¿½ï¿½Í¼Æ¬ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½
+    private int addObstacleTimer = 0;// ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+    private boolean finish = false;// ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾
+    private List<Obstacle> list = new ArrayList<Obstacle>();// ï¿½Ï°ï¿½ï¿½ï¿½ï¿½ï¿½
+    private final int FREASH = FreshThread.FREASH;// Ë¢ï¿½ï¿½Ê±ï¿½ï¿½
 
-    int score = 0;// µÃ·Ö
-    int scoreTimer = 0;// ·ÖÊý¼ÆÊ±Æ÷
+    int score = 0;// ï¿½Ã·ï¿½
+    int scoreTimer = 0;// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
 
     public GamePanel() {
-        // Ö÷Í¼Æ¬²ÉÓÃ¿í800¸ß300µÄ²ÊÉ«Í¼Æ¬
+        // ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½Ã¿ï¿½800ï¿½ï¿½300ï¿½Ä²ï¿½É«Í¼Æ¬
         image = new BufferedImage(800, 300, BufferedImage.TYPE_INT_BGR);
-        g2 = image.createGraphics();// »ñÈ¡Ö÷Í¼Æ¬»æÍ¼¶ÔÏó
-        background = new BackgroundImage();// ³õÊ¼»¯¹ö¶¯±³¾°
-        golden = new Dinosaur();// ³õÊ¼»¯Ð¡¿ÖÁú
-        list.add(new Obstacle());// Ìí¼ÓµÚÒ»¸öÕÏ°­
-        FreshThread t = new FreshThread(this);// Ë¢ÐÂÖ¡Ïß³Ì
-        t.start();// Æô¶¯Ïß³Ì
+        g2 = image.createGraphics();// ï¿½ï¿½È¡ï¿½ï¿½Í¼Æ¬ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½
+        background = new BackgroundImage();// ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        golden = new Dinosaur();// ï¿½ï¿½Ê¼ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½
+        list.add(new Obstacle());// ï¿½ï¿½Óµï¿½Ò»ï¿½ï¿½ï¿½Ï°ï¿½
+        FreshThread t = new FreshThread(this);// Ë¢ï¿½ï¿½Ö¡ï¿½ß³ï¿½
+        t.start();// ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
     }
 
     /**
-     * »æÖÆÖ÷Í¼Æ¬
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬
      */
     private void paintImage() {
-        background.roll();// ±³¾°Í¼Æ¬¿ªÊ¼¹ö¶¯
-        golden.move();// ¿ÖÁú¿ªÊ¼ÒÆ¶¯
-        g2.drawImage(background.image, 0, 0, this);// »æÖÆ¹ö¶¯±³¾°
-        if (addObstacleTimer == 1300) {// Ã¿¹ý1300ºÁÃë
-            if (Math.random() * 100 > 40) {// 60%¸ÅÂÊ³öÏÖÕÏ°­
+        background.roll();// ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
+        golden.move();// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½Æ¶ï¿½
+        g2.drawImage(background.image, 0, 0, this);// ï¿½ï¿½ï¿½Æ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        if (addObstacleTimer == 1300) {// Ã¿ï¿½ï¿½1300ï¿½ï¿½ï¿½ï¿½
+            if (Math.random() * 100 > 40) {// 60%ï¿½ï¿½ï¿½Ê³ï¿½ï¿½ï¿½ï¿½Ï°ï¿½
                 list.add(new Obstacle());
             }
-            addObstacleTimer = 0;// ÖØÐÂ¼ÆÊ±
+            addObstacleTimer = 0;// ï¿½ï¿½ï¿½Â¼ï¿½Ê±
         }
 
-        for (int i = 0; i < list.size(); i++) {// ±éÀúÕÏ°­¼¯ºÏ
-            Obstacle o = list.get(i);// »ñÈ¡ÕÏ°­¶ÔÏó
-            if (o.isLive()) {// Èç¹ûÊÇÓÐÐ§ÕÏ°­
-                o.move();// ÕÏ°­ÒÆ¶¯
-                g2.drawImage(o.image, o.x, o.y, this);// »æÖÆÕÏ°­
-                // Èç¹û¿ÖÁúÍ·½ÅÅöµ½ÕÏ°­
+        for (int i = 0; i < list.size(); i++) {// ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ï¿½ï¿½ï¿½ï¿½
+            Obstacle o = list.get(i);// ï¿½ï¿½È¡ï¿½Ï°ï¿½ï¿½ï¿½ï¿½ï¿½
+            if (o.isLive()) {// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½Ï°ï¿½
+                o.move();// ï¿½Ï°ï¿½ï¿½Æ¶ï¿½
+                g2.drawImage(o.image, o.x, o.y, this);// ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½
                 if (o.getBounds().intersects(golden.getFootBounds())
                         || o.getBounds().intersects(golden.getHeadBounds())) {
-                    Sound.hit();// ²¥·Å×²»÷ÉùÒô
-                    gameOver();// ÓÎÏ·½áÊø
+                    Sound.hit();// ï¿½ï¿½ï¿½ï¿½×²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                    gameOver();// ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½
                 }
-            } else {// Èç¹û²»ÊÇÓÐÐ§ÕÏ°­
-                list.remove(i);// É¾³ý´ËÕÏ°­
-                i--;// Ñ­»·±äÁ¿Ç°ÒÆ
+            } else {// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½Ï°ï¿½
+                list.remove(i);// É¾ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½
+                i--;// Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½
             }
         }
-        g2.drawImage(golden.image, golden.x, golden.y, this);// »æÖÆ¿ÖÁú
-        if (scoreTimer >= 500) {// Ã¿¹ý500ºÁÃë
-            score += 10;// ¼ÓÊ®·Ö
-            scoreTimer = 0;// ÖØÐÂ¼ÆÊ±
+        g2.drawImage(golden.image, golden.x, golden.y, this);// ï¿½ï¿½ï¿½Æ¿ï¿½ï¿½ï¿½
+        if (scoreTimer >= 500) {// Ã¿ï¿½ï¿½500ï¿½ï¿½ï¿½ï¿½
+            score += 10;// ï¿½ï¿½Ê®ï¿½ï¿½
+            scoreTimer = 0;// ï¿½ï¿½ï¿½Â¼ï¿½Ê±
         }
 
-        g2.setColor(Color.BLACK);// Ê¹ÓÃºÚÉ«
-        g2.setFont(new Font("ºÚÌå", Font.BOLD, 24));// ÉèÖÃ×ÖÌå
-        g2.drawString(String.format("%06d", score), 700, 30);// »æÖÆ·ÖÊý
+        g2.setColor(Color.BLACK);// Ê¹ï¿½Ãºï¿½É«
+        g2.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.BOLD, 24));// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        g2.drawString(String.format("%06d", score), 700, 30);// ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½
 
-        addObstacleTimer += FREASH;// ÕÏ°­¼ÆÊ±Æ÷µÝÔö
-        scoreTimer += FREASH;// ·ÖÊý¼ÆÊ±Æ÷µÝÔö
+        addObstacleTimer += FREASH;// ï¿½Ï°ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        scoreTimer += FREASH;// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     }
 
     /**
-     * ÖØÐ´»æÖÆ×é¼þ·½·¨
+     * ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      */
     public void paint(Graphics g) {
-        paintImage();// »æÖÆÖ÷Í¼Æ¬ÄÚÈÝ
+        paintImage();// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½
         g.drawImage(image, 0, 0, this);
     }
 
     /**
-     * ÓÎÏ·ÊÇ·ñ½áÊø
+     * ï¿½ï¿½Ï·ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
      * 
      * @return
      */
@@ -100,20 +100,20 @@ public class GamePanel extends JPanel implements KeyListener {
     }
 
     /**
-     * Ê¹ÓÎÏ·½áÊø
+     * Ê¹ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½
      */
     public void gameOver() {
-        ScoreRecorder.addNewScore(score);// ¼ÇÂ¼µ±Ç°·ÖÊý
+        ScoreRecorder.addNewScore(score);// ï¿½ï¿½Â¼ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½
         finish = true;
     }
 
     /**
-     * ÊµÏÖ°´ÏÂ¼üÅÌ°´¼ü·½·¨
+     * Êµï¿½Ö°ï¿½ï¿½Â¼ï¿½ï¿½Ì°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      */
     public void keyPressed(KeyEvent e) {
-        int code = e.getKeyCode();// »ñÈ¡°´ÏÂµÄ°´¼üÖµ
-        if (code == KeyEvent.VK_SPACE) {// Èç¹ûÊÇ¿Õ¸ñ
-            golden.jump();// ¿ÖÁúÌøÔ¾
+        int code = e.getKeyCode();// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ÂµÄ°ï¿½ï¿½ï¿½Öµ
+        if (code == KeyEvent.VK_SPACE) {// ï¿½ï¿½ï¿½ï¿½Ç¿Õ¸ï¿½
+            golden.jump();// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¾
         }
     }
 

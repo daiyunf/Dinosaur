@@ -13,7 +13,7 @@ import com.mr.view.BackgroundImage;
 /**
  * ÕÏ°­Àà
  * 
- * @author mingrisoft
+ * @author ¸ñÂ×µÄÆæÃîÃ°ÏÕ
  *
  */
 

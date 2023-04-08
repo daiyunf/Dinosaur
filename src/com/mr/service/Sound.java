@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 /**
  * 音效类
  * 
- * @author mingrisoft
+ * @author 格伦的奇妙冒险
  *
  */
 public class Sound {

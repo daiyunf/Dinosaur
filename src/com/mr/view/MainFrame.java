@@ -9,7 +9,7 @@ import com.mr.service.ScoreRecorder;
 import com.mr.service.Sound;
 /**
  * 主窗体
- * @author mingrisoft
+ * @author 格伦的奇妙冒险
  *
  */
 public class MainFrame extends JFrame {

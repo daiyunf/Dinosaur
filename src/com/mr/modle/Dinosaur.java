@@ -11,7 +11,7 @@ import com.mr.service.Sound;
 /**
  * ¿ÖÁúÀà
  * 
- * @author mingrisoft
+ * @author  ¸ñÂ×µÄÆæÃîÃ°ÏÕ
  *
  */
 

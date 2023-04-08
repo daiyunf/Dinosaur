@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 /**
  * ¹ö¶¯±³¾°
  * 
- * @author mingrisoft
+ * @author ¸ñÂ×µÄÆæÃîÃ°ÏÕ
  *
  */
 public class BackgroundImage {

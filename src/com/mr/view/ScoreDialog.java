@@ -8,7 +8,7 @@ import com.mr.service.ScoreRecorder;
 /**
  * 成绩对话框
  * 
- * @author mingrisoft
+ * @author 格伦的奇妙冒险
  *
  */
 

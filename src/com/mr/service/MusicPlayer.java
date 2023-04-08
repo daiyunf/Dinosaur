@@ -14,20 +14,20 @@ import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
- * ÒôÀÖ²¥·ÅÆ÷
+ * ï¿½ï¿½ï¿½Ö²ï¿½ï¿½ï¿½ï¿½ï¿½
  * 
- * @author mingrisoft
+ * @author æ ¼ä¼¦çš„å¥‡å¦™å†’é™©
  */
 public class MusicPlayer implements Runnable {
-    File soundFile; // ÒôÀÖÎÄ¼þ
-    Thread thread;// ¸¸Ïß³Ì
-    boolean circulate;// ÊÇ·ñÑ­»·²¥·Å
+    File soundFile; // ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
+    Thread thread;// ï¿½ï¿½ï¿½ß³ï¿½
+    boolean circulate;// ï¿½Ç·ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
     /**
-     * ¹¹Ôì·½·¨£¬Ä¬ÈÏ²»Ñ­»·²¥·Å
+     * ï¿½ï¿½ï¿½ì·½ï¿½ï¿½ï¿½ï¿½Ä¬ï¿½Ï²ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * 
      * @param filepath
-     *            ÒôÀÖÎÄ¼þÍêÕûÃû³Æ
+     *            ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @throws FileNotFoundException
      */
     public MusicPlayer(String filepath) throws FileNotFoundException {
@@ -35,64 +35,64 @@ public class MusicPlayer implements Runnable {
     }
 
     /**
-     * ¹¹Ôì·½·¨
+     * ï¿½ï¿½ï¿½ì·½ï¿½ï¿½
      * 
      * @param filepath
-     *            ÒôÀÖÎÄ¼þÍêÕûÃû³Æ
+     *            ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @param circulate
-     *            ÊÇ·ñÑ­»·²¥·Å
+     *            ï¿½Ç·ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @throws FileNotFoundException
      */
     public MusicPlayer(String filepath, boolean circulate)
             throws FileNotFoundException {
         this.circulate = circulate;
         soundFile = new File(filepath);
-        if (!soundFile.exists()) {// Èç¹ûÎÄ¼þ²»´æÔÚ
-            throw new FileNotFoundException(filepath + "Î´ÕÒµ½");
+        if (!soundFile.exists()) {// ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            throw new FileNotFoundException(filepath + "Î´ï¿½Òµï¿½");
         }
     }
 
     /**
-     * ²¥·Å
+     * ï¿½ï¿½ï¿½ï¿½
      */
     public void play() {
-        thread = new Thread(this);// ´´½¨Ïß³Ì¶ÔÏó
-        thread.start();// ¿ªÆôÏß³Ì
+        thread = new Thread(this);// ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ì¶ï¿½ï¿½ï¿½
+        thread.start();// ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
     }
 
     /**
-     * Í£Ö¹²¥·Å
+     * Í£Ö¹ï¿½ï¿½ï¿½ï¿½
      */
     public void stop() {
-        thread.stop();// Ç¿ÖÆ¹Ø±ÕÏß³Ì
+        thread.stop();// Ç¿ï¿½Æ¹Ø±ï¿½ï¿½ß³ï¿½
     }
 
     /**
-     * ÖØÐ´Ïß³ÌÖ´ÐÐ·½·¨
+     * ï¿½ï¿½Ð´ï¿½ß³ï¿½Ö´ï¿½Ð·ï¿½ï¿½ï¿½
      */
     public void run() {
-        byte[] auBuffer = new byte[1024 * 128];// ´´½¨128k»º³åÇø
+        byte[] auBuffer = new byte[1024 * 128];// ï¿½ï¿½ï¿½ï¿½128kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         do {
-            AudioInputStream audioInputStream = null; // ´´½¨ÒôÆµÊäÈëÁ÷¶ÔÏó
-            SourceDataLine auline = null; // »ìÆµÆ÷Ô´Êý¾ÝÐÐ
+            AudioInputStream audioInputStream = null; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            SourceDataLine auline = null; // ï¿½ï¿½Æµï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             try {
-                // ´ÓÒôÀÖÎÄ¼þÖÐ»ñÈ¡ÒôÆµÊäÈëÁ÷
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ð»ï¿½È¡ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 audioInputStream = AudioSystem.getAudioInputStream(soundFile);
-                AudioFormat format = audioInputStream.getFormat(); // »ñÈ¡ÒôÆµ¸ñÊ½
-                // °´ÕÕÔ´Êý¾ÝÐÐÀàÐÍºÍÖ¸¶¨ÒôÆµ¸ñÊ½´´½¨Êý¾ÝÐÐ¶ÔÏó
+                AudioFormat format = audioInputStream.getFormat(); // ï¿½ï¿½È¡ï¿½ï¿½Æµï¿½ï¿½Ê½
+                // ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½
                 DataLine.Info info = new DataLine.Info(SourceDataLine.class,
                         format);
-                // ÀûÓÃÒôÆµÏµÍ³Àà»ñµÃÓëÖ¸¶¨ Line.Info ¶ÔÏóÖÐµÄÃèÊöÆ¥ÅäµÄÐÐ£¬²¢×ª»»ÎªÔ´Êý¾ÝÐÐ¶ÔÏó
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÆµÏµÍ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ Line.Info ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½×ªï¿½ï¿½ÎªÔ´ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½
                 auline = (SourceDataLine) AudioSystem.getLine(info);
-                auline.open(format);// °´ÕÕÖ¸¶¨¸ñÊ½´ò¿ªÔ´Êý¾ÝÐÐ
-                auline.start();// Ô´Êý¾ÝÐÐ¿ªÆô¶ÁÐ´»î¶¯
-                int byteCount = 0;// ¼ÇÂ¼ÒôÆµÊäÈëÁ÷¶Á³öµÄ×Ö½ÚÊý
-                while (byteCount != -1) {// Èç¹ûÒôÆµÊäÈëÁ÷ÖÐ¶ÁÈ¡µÄ×Ö½ÚÊý²»Îª-1
-                    // ´ÓÒôÆµÊý¾ÝÁ÷ÖÐ¶Á³ö128KµÄÊý¾Ý
+                auline.open(format);// ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                auline.start();// Ô´ï¿½ï¿½ï¿½ï¿½ï¿½Ð¿ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½î¶¯
+                int byteCount = 0;// ï¿½ï¿½Â¼ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½
+                while (byteCount != -1) {// ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½È¡ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½Îª-1
+                    // ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½128Kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     byteCount = audioInputStream.read(auBuffer, 0,
                             auBuffer.length);
-                    if (byteCount >= 0) {// Èç¹û¶Á³öÓÐÐ§Êý¾Ý
-                        auline.write(auBuffer, 0, byteCount);// ½«ÓÐÐ§Êý¾ÝÐ´ÈëÊý¾ÝÐÐÖÐ
+                    if (byteCount >= 0) {// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½
+                        auline.write(auBuffer, 0, byteCount);// ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                     }
                 }
             } catch (IOException e) {
@@ -102,9 +102,9 @@ public class MusicPlayer implements Runnable {
             } catch (LineUnavailableException e) {
                 e.printStackTrace();
             } finally {
-                auline.drain();// Çå¿ÕÊý¾ÝÐÐ
-                auline.close();// ¹Ø±ÕÊý¾ÝÐÐ
+                auline.drain();// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                auline.close();// ï¿½Ø±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             }
-        } while (circulate);// ¸ù¾ÝÑ­»·±êÖ¾ÅÐ¶ÏÊÇ·ñÑ­»·²¥·Å
+        } while (circulate);// ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½Ð¶ï¿½ï¿½Ç·ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     }
 }

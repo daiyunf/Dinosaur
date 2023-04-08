@@ -8,7 +8,7 @@ import com.mr.view.ScoreDialog;
 /**
  * 刷新帧线程
  * 
- * @author mingrisoft
+ * @author 格伦的奇妙冒险
  *
  */
 public class FreshThread extends Thread {

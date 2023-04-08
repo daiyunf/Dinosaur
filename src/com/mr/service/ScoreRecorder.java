@@ -7,7 +7,7 @@ import java.util.Arrays;
 /**
  * 分数记录器
  * 
- * @author mingrisoft
+ * @author 格伦的奇妙冒险
  *
  */
 public class ScoreRecorder {

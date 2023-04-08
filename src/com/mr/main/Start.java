@@ -5,7 +5,7 @@ import com.mr.view.MainFrame;
 /**
  * 入口类
  * 
- * @author mingrisoft
+ * @author 格伦的奇妙冒险
  *
  */
 public class Start {
