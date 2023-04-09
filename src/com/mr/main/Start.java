@@ -5,7 +5,7 @@ import com.mr.view.MainFrame;
 /**
  * 
  *
- * @author 格伦的奇妙冒险 hhh
+ * @author 格伦的奇妙冒险
  *
  */
 public class Start {
