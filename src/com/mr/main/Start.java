@@ -3,15 +3,15 @@ package com.mr.main;
 import com.mr.view.MainFrame;
 
 /**
- * Èë¿ÚÀà
  * 
- * @author ¸ñÂ×µÄÆæÃîÃ°ÏÕ   hhhjjj
+ * 
+ * @author ×µ æ ¼ä¼¦çš„å¥‡å¦™å†’é™© 
  *
  */
 public class Start {
 
     public static void main(String[] args) {
-        MainFrame frame = new MainFrame();// ´´½¨Ö÷´°Ìå
-        frame.setVisible(true);// ÏÔÊ¾Ö÷´°Ìå
+        MainFrame frame = new MainFrame();// 
+        frame.setVisible(true);// Ê¾
     }
 }
